@@ -73,26 +73,41 @@ if (actualTemp===desiredTemp)
 
 // lets try this one more time with feeling:
 
-function thermostatFunction(actualTemp, desiredTemp) {
-let actualTemp=prompt("What is the current temperature?")
-let desiredTemp=prompt("What temperature do you want it to be?")
-if (actualTemp<desiredTemp) {
-    while (actualTemp<desiredTemp){
-        console.log(`Current Temperature: ${actualTemp}`)
-        actualTemp++;
-        console.log("Run Heat");
-        console.log(`Modified Temperature: ${actualTemp}, It's getting hot in here`)}}
-else if (actualTemp>desiredTemp) {
-    while (actualTemp>desiredTemp){
-        console.log(`Current Temperature: ${actualTemp}`)
-        actualTemp--;
-        console.log("Run A/C");
-        console.log(`Modified Temperature: ${actualTemp}, ICE ICE BABY`)}}
-else if (actualTemp===desiredTemp){
-    console.log(`Take your finger off that dial son, it already ${actualTemp}!\nSTANDBY SOLDIER, that's an order!`)
+function thermostatFunction() {
+    let actualTemp=prompt("What is the current temperature?")
+    let desiredTemp=prompt("What temperature do you want it to be?")
+    if (actualTemp<desiredTemp) {
+        while (actualTemp<desiredTemp){
+            console.log(`Current Temperature: ${actualTemp}`)
+            actualTemp++;
+            console.log("Run Heat");
+            console.log(`Modified Temperature: ${actualTemp}, It's getting hot in here`)
+            setTimeout(document.getElementById("temp-readout").innerHTML =(`${actualTemp} C`), 1000)};
+        }
+    else if (actualTemp>desiredTemp) {
+        while (actualTemp>desiredTemp){
+            console.log(`Current Temperature: ${actualTemp}`)
+            actualTemp--;
+            console.log("Run A/C");
+            console.log(`Modified Temperature: ${actualTemp}, ICE ICE BABY`)
+            setTimeout(document.getElementById("temp-readout").innerHTML =(`${actualTemp} C`), 1000)};
+        }
+    else if (actualTemp===desiredTemp){
+        console.log(`Take your finger off that dial son, it already ${actualTemp}!\nSTANDBY SOLDIER, that's an order!`);
+        document.getElementById("temp-readout").innerHTML =(`${actualTemp} C`);
+    }
+    else {console.log("It's relatively comfy cozy in here now.")};
 }
-else {console.log("It's relatively comfy cozy in here now.")};
+
+/* Playing with timers
+
+function myFunction() {
+  setInterval(function(){ alert("Hello"); }, 3000); - waits 3s to say hello
 }
+setInterval for repeating (and continuous I've found) setTimeout for one shot delay.  thinking settimeout is what I want to go for.
+wont count the temp down in HTML, console stuff happens pretty instantaneoulsy, which is fine, but I was really thinking the timeout at the
+end of the while statements would act as a sort of speed governor.
+*/
 // got this one to work, but the else statement that I was hoping would be my endpoint after the loop isn't running.
 //to do later: maybe drop a thermostat image, position a button on it or forms, and have scripts display currentTemp in DOM with a 1.5 sec delay in loops
 
@@ -103,9 +118,6 @@ Start with two variables: tempCelsius (a number) and targetUnit (a string, eithe
 Write a switch statement that checks the targetUnit and logs the temperature converted to
 that unit. Notes: K stands for Kelvin. C requires no conversion, print out the original temp
 */
-
-let actualTemp = prompt("What temperature is it?");
-let desiredTemp = prompt("What temperature do you want it?");
 
 /* example while loop
 let a=0, j=0;
