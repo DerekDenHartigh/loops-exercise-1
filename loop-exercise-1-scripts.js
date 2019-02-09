@@ -39,3 +39,27 @@ for (let m of ridiculousArray) {
 /* Extended Challenges second exercise:  Given any string, use a loop to add padding (extra spaces) to the front to make the string ten 
 characters long. For example, given the string “planet”, log “    planet” (add four spaces), and for  the string “headlamp”, log “  headlamp”
 (add two spaces).  */
+
+let space = " "
+let someString = prompt("gimme a word from 0-10 characters!")
+
+// function spaceToTen(){
+    if (someString.length===10){
+        console.log(someString);
+    } // works
+    if (someString===(undefined || null) || someString.length>10) {
+        console.log(`I told you 0-10 characters ${someString} doesn't meet those parameters!`); // greater than 10 works, undefined or null doesn't?
+    } else
+    // if (someString.length<10) {
+    //     while (someString.length<10){
+    //         someString = space + someString;
+    //         console.log(someString); 
+    //     }
+    // } // this does achieve the desired result, but loops until it does, can probably get it in one step with math.
+    if (someString.length<10){
+        let spaceCount = (10-someString.length);
+        someString = space.repeat(spaceCount)+someString;
+        console.log(someString); // huzzah, skipped the loop, did some quick mafs for a 1 step loopless 10 char word.
+    }
+    
+// }
